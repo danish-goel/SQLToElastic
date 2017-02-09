@@ -1,0 +1,19 @@
+{
+  "name": "liveht",
+  "version": "1.0.0",
+  "description": "liveht apis",
+  "main": "index.js",
+  "scripts": {
+    "start": "node bin/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "3.4.6",
+    "body-parser": "1.15.2",
+    "elasticsearch": "10.1.3",
+    "express": "4.14.0",
+    "mysql": "^2.13.0",
+    "node-schedule": "0.2.9"
+  }
+}
