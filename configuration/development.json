@@ -1,0 +1,44 @@
+{
+    "urls": {
+        "desktop": "http://www.livehindustan.com",
+        "mobile": ""
+    },
+    "server": {
+        "port": 8000,
+        "cache": true
+    },
+    "locals": {
+        "title": "Live Hindustan"
+    },
+    "debug": {
+        "DEBUG": "htapp,htapp:*"
+    },
+    "elastic": {
+        "url": "10.139.1.22:9200",
+        "hosts": "http://search-livehindustan-es-staging-rvfohl2h6iie43ir4bvf2ook7m.ap-south-1.es.amazonaws.com",
+        "region": "ap-south-1",
+        "accessKey": "AKIAJNEJGITNSTACTTXQ",
+        "secretKey": "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"
+    },
+    "mysql": {
+        "host": "127.0.0.1",
+        "user": "root",
+        "password": "danish",
+        "database": "liveht"
+    },
+    "elasticindex": {
+        "article": "article",
+        "template": "newtemplate",
+        "taxonomy": "taxonomy",
+        "page": "page",
+        "metatag": "metatag",
+        "menu": "menu",
+        "ga": "ga",
+        "contentconfig": "contentconfig",
+        "basetemplate": "basetemplate",
+        "previewpage": "previewpage",
+        "previewstory": "previewstory",
+        "config": "config",
+        "redirection": "redirection"
+    }
+}

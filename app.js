@@ -1,14 +1,8 @@
 var express = require('express');
 var app = express();
-var db = require('./db');
+var mysql = require('./db').mysql;
 var Promise = require('bluebird');
-
-var elasticsearch = require('elasticsearch');
-var elasticurl = 'localhost:9200'
-var client = new elasticsearch.Client({
-    host: elasticurl
-});
-
+var elastic = require('./db').elastic;
 
 var limit = 1000;
 var lastnid = 0;
@@ -20,7 +14,7 @@ function recurseDocs(limit) {
                 console.log("done");
             }
             else {
-                sendBulkQuery(data, client, limit)
+                sendBulkQuery(data, elastic, limit)
                     .then(() => {
                         recurseDocs(limit);
                     })
@@ -41,7 +35,7 @@ function getDocs(limit) {
     return new Promise(function (resolve, reject) {
 
         var query = 'SELECT * from topstory_main where id >' + lastnid + ' ORDER BY id ASC LIMIT ' + limit;
-        db.query(query, function (err, rows, fields) {
+        mysql.query(query, function (err, rows, fields) {
             if (err) {
                 return reject(err);
             }
@@ -62,7 +56,7 @@ function getDocs(limit) {
                     obj.story_url = rows[i].story_url;
                     obj.app = rows[i].app;
                     obj.crtd_by = rows[i].crtd_by;
-                    obj.crtd_date = rows[i].crtd_date;
+                    obj.changed = rows[i].crtd_date;
                     obj.lst_mod_by = rows[i].lst_mod_by;
                     obj.lst_mod_date = rows[i].lst_mod_date;
                     data.push(obj);
